@@ -1,24 +1,25 @@
-import styled from "styled-components";
 import appLogo from "../../images/app-logo.svg";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { userDataType } from "../../user-data";
-import { dataProps } from "../../data-type";
 import { dataObject } from "../../data";
 import { useNavigate } from "react-router-dom";
-
-type FormTypes = {
-  email: string;
-  password: string;
-  repPassword: string;
-};
-interface Props {
-  userData: userDataType;
-  setUserData: (props: userDataType) => void;
-  dataList: dataProps[];
-  setDataList: (props: dataProps[]) => void;
-  currentDataIndex: number;
-}
+import { FormTypes, Props } from "./signupPage-types";
+import {
+  Container,
+  LogoBox,
+  Logo,
+  ContentBox,
+  PageTitle,
+  Form,
+  InputEmail,
+  InputPassword,
+  InputRepeatPassword,
+  Submit,
+  SignUpBox,
+  SignUpNote,
+  SignUpLink,
+  ErrorMsg,
+} from "./signupPage-styles";
 
 function SignupPage(props: Props) {
   const { userData, setUserData, dataList, setDataList, currentDataIndex } =
@@ -78,7 +79,10 @@ function SignupPage(props: Props) {
             placeholder="Passwords"
             {...register("password", {
               required: "Password required",
-              minLength: 8,
+              minLength: {
+                value: 8,
+                message: "Min 10 characters",
+              },
             })}
           />
 
@@ -114,86 +118,3 @@ function SignupPage(props: Props) {
 }
 
 export default SignupPage;
-
-const Container = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: ${(props) => props.theme.white};
-`;
-const LogoBox = styled.div`
-  margin-block: 48px 58px;
-`;
-const Logo = styled.img`
-  width: 32px;
-  height: 25px;
-`;
-
-const ContentBox = styled.div`
-  max-width: 327px;
-  width: 100%;
-  background: ${(props) => props.theme.darkBlue};
-  border-radius: 10px;
-  padding: 24px 24px 26px 24px;
-`;
-const PageTitle = styled.h1`
-  font-size: 32px;
-  font-weight: 300;
-  line-height: normal;
-  letter-spacing: -0.5px;
-  margin-bottom: 40px;
-`;
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-`;
-const InputEmail = styled.input`
-  display: block;
-  font-size: 15px;
-  font-weight: 300;
-  line-height: normal;
-  background: ${(props) => props.theme.darkBlue};
-  color: ${(props) => props.theme.white};
-  padding-inline: 16px;
-  padding-block: 9px;
-  border: none;
-  border-bottom: 1px solid ${(props) => props.theme.grey};
-  margin-bottom: 24px;
-`;
-const InputPassword = styled(InputEmail)`
-  display: block;
-`;
-const InputRepeatPassword = styled(InputEmail)`
-  display: block;
-  margin-bottom: 40px;
-`;
-const Submit = styled.input`
-  display: block;
-  font-size: 15px;
-  font-weight: 300;
-  line-height: normal;
-  background: ${(props) => props.theme.red};
-  color: ${(props) => props.theme.white};
-  border-radius: 6px;
-  padding: 15px 68px;
-  margin-bottom: 24px;
-  border: none;
-`;
-
-const SignUpBox = styled.div`
-  text-align: center;
-`;
-const SignUpNote = styled.span``;
-const SignUpLink = styled.span`
-  & > a {
-    text-decoration: none;
-    color: ${(props) => props.theme.red};
-    margin-left: 9px;
-  }
-`;
-const ErrorMsg = styled.span`
-  color: ${(props) => props.theme.red};
-  margin-bottom: 10px;
-`;

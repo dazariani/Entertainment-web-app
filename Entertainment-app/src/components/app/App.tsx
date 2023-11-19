@@ -15,13 +15,8 @@ import SignupPage from "../signupPage/SignupPage";
 import { BrowserRouter } from "react-router-dom";
 import { Route, Routes } from "react-router-dom";
 
-interface ThemeProps {
-  red: string;
-  black: string;
-  grey: string;
-  darkBlue: string;
-  white: string;
-}
+import { ThemeProps } from "./app-types";
+
 const defaultTheme: ThemeProps = {
   red: "rgb(252, 71, 71)",
   black: "rgb(16, 20, 30)",

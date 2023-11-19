@@ -1,26 +1,10 @@
 import styled from "styled-components";
-import { dataProps } from "../../data-type";
-import { userDataType } from "../../user-data";
+import { Props } from "./main-app-types";
 import Navbar from "../navbar/Navbar";
 import SearchInput from "../searchInput/SearchInput";
 import TrendingLine from "../trendingLine/TrendingLine";
 import RecommendedSection from "../recommendedSection/MainContent";
 
-interface Props {
-  tabNum: number;
-  setTabNum: (props: number) => void;
-  inputValue: string;
-  setInputValue: (props: string) => void;
-  scrollValue: number;
-  setScrollValue: (props: number) => void;
-  data: dataProps | null;
-  setData: (props: dataProps | null) => void;
-  width: number;
-  resultCount: number;
-  setResultCount: (props: number) => void;
-  userData: userDataType;
-  setUserData: (props: userDataType) => void;
-}
 function MainApp(props: Props) {
   const {
     tabNum,
